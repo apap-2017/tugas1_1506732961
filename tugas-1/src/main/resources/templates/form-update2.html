@@ -14,7 +14,7 @@
 			<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
 			<hr/>
 			<h3>Ubah Keluarga</h3>
-			<form method="post" action="#" th:action="@{/keluarga/ubah/submit}" th:object="${keluarga}">
+			<form  th:action="@{/keluarga/ubah/} + ${nomor_kk}" method="post" th:object="${keluarga}" action="#" >
 			 <div class="form-group">
 			    <label class="form-control-label" for="alamat">Alamat</label>
 			    <input th:field="*{alamat}" type="text" name="alamat" class="form-control" id="alamat" placeholder="Isi Alamat" />

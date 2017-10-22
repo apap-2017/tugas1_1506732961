@@ -7,8 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -139,7 +140,7 @@ public class MainController {
 		}
 	}
 	
-	@RequestMapping("/penduduk/tambah")
+	@GetMapping("/penduduk/tambah")
 	public String tambah(Model model)
 	{
 		PendudukModel penduduk = new PendudukModel();
@@ -148,7 +149,7 @@ public class MainController {
 		return "form-add";
 	}
 	
-	@RequestMapping(value="/penduduk/tambah/submit", method=RequestMethod.POST)
+	@PostMapping(value="/penduduk/tambah")
 	public String tambahProses(PendudukModel penduduk1, Model model)
 	{
 		KeluargaModel keluarga = keluargaDAO.selectKeluargabyId(penduduk1.getId_keluarga());
@@ -218,7 +219,7 @@ public class MainController {
 		return "success-add";
 	}
 	
-	@RequestMapping("/keluarga/tambah")
+	@GetMapping("/keluarga/tambah")
 	public String keluargaTambah(Model model)
 	{
 		KeluargaModel keluarga = new KeluargaModel();
@@ -231,7 +232,7 @@ public class MainController {
 		return "form-add2";
 	}
 	
-	@RequestMapping(value="/keluarga/tambah/submit", method=RequestMethod.POST)
+	@PostMapping(value="/keluarga/tambah")
 	public String tambahKeluargaProses(KeluargaModel keluarga, Model model)
 	{
 		
@@ -277,7 +278,7 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping(value="/penduduk/ubah/{nik}")
+	@GetMapping("/penduduk/ubah/{nik}")
 	public String ubahPenduduk(Model model, @PathVariable(value = "nik") String nik)
 	{
 		PendudukModel penduduk = pendudukDAO.selectPenduduk(nik);
@@ -285,7 +286,7 @@ public class MainController {
 		return "form-update";
 	}
 	
-	@RequestMapping(value="/penduduk/ubah/submit", method=RequestMethod.POST)
+	@PostMapping(value="/penduduk/ubah/{nik}")
 	public String ubahPendudukProses(PendudukModel penduduk, Model model)
 	{
 		String niklama = penduduk.getNik();
@@ -348,7 +349,7 @@ public class MainController {
 		return "success-update";
 	}
 	
-	@RequestMapping("/keluarga/ubah/{nomor_kk}")
+	@GetMapping("/keluarga/ubah/{nomor_kk}")
 	public String ubahKeluarga(Model model,  @PathVariable(value = "nomor_kk") String nomor_kk)
 	{
 		KeluargaModel keluarga = keluargaDAO.selectKeluarga2(nomor_kk);
@@ -360,7 +361,7 @@ public class MainController {
 		return "form-update2";
 	}
 	
-	@RequestMapping("/keluarga/ubah/submit")
+	@PostMapping("/keluarga/ubah/{nomor_kk}")
 	public String ubahKeluargaProses(Model model, KeluargaModel keluarga)
 	{	
 		String nkklama = keluarga.getNomor_kk();

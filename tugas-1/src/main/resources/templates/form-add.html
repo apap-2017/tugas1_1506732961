@@ -14,7 +14,7 @@
 			<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
 			<hr/>
 			<h3>Tambah Penduduk</h3>
-			<form method="post" action="#" th:action="@{/penduduk/tambah/submit}" th:object="${penduduk}">
+			<form action="#" th:action="@{/penduduk/tambah}"  method="post" th:object="${penduduk}">
 			 <div class="form-group">
 			    <label class="form-control-label" for="nama">Masukkan Nama</label>
 			    <input th:field="*{nama}" type="text" name="nama" class="form-control" id="nama" placeholder="Isi Nama" />
