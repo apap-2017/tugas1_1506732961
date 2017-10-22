@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${page_title}"></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragments :: header"></nav>
+		
+		<div class="container container-fluid">
+			<hr/>
+			<h4 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}"></h4>
+			
+			<table class="container table-hover">
+				<tbody>
+					<tr>
+						<td th:text="'NIK'"></td>
+						<td th:text="${penduduk.nik}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Nama'"></td>
+						<td th:text="${penduduk.nama}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Tempat/Tanggal Lahir'"></td>
+						<td th:text="${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Alamat'"></td>
+						<td th:text="${keluarga.alamat}"></td>
+					</tr>
+					<tr>
+						<td th:text="'RT/RW'"></td>
+						<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Kelurahan/Desa'"></td>
+						<td th:text="${kelurahan.nama_kelurahan}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Kecamatan'"></td>
+						<td th:text="${kecamatan.nama_kecamatan}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Kota'"></td>
+						<td th:text="${kota.nama_kota}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Golongan Darah'"></td>
+						<td th:text="${penduduk.golongan_darah}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Agama'"></td>
+						<td th:text="${penduduk.agama}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Status Perkawinan'"></td>
+						<td th:text="${penduduk.status_perkawinan}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Pekerjaan'"></td>
+						<td th:text="${penduduk.pekerjaan}"></td>
+					</tr>
+					<tr>
+						<td th:text="'Kewarganegaraan'"></td>
+						<td th:text="${penduduk.is_wni} == 1 ? 'WNI' : 'WNA' "></td>
+					</tr>
+					<tr>
+						<td th:text="'Status Kematian'"></td>
+						<td th:text="${penduduk.is_wafat} == 0 ? 'Hidup' : 'Mati' "></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr/>
+			<a th:href="'/penduduk/ubah/' + ${penduduk.nik}" class="btn btn-primary">Ubah data penduduk</a><br/>
+			
+			
+		</div>
+		
+	</body>
+</html>

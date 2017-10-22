@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${page_title}">
+		</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragments :: header"></nav>
+		
+		<div class="container container-fluid">
+			<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+			<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
+			<hr/>
+			<h3>Tambah Keluarga</h3>
+			<form method="post" action="#" th:action="@{/keluarga/tambah}" th:object="${keluarga}">
+			 <div class="form-group">
+			    <label class="form-control-label" for="alamat">Alamat</label>
+			    <input th:field="*{alamat}" type="text" name="alamat" class="form-control" id="alamat" placeholder="Isi Alamat" />
+			     <label class="form-control-label" for="rt">RT</label>
+			    <input th:field="*{rt}" type="text" name="rt" class="form-control" id="rt" placeholder="Isi Nomor RT" />
+			     <label class="form-control-label" for="rw">RW</label>
+			    <input th:field="*{rw}" type="text" name="rw" class="form-control" id="rw" placeholder="Isi RW" />
+			     <label class="form-control-label" for="kelurahan">Kelurahan/Desa</label>
+			    <select name="id_kelurahan" class="form-control" id="id_kelurahan">
+			    	<option th:each="kelurahan,iterationStatus: ${kelurahans}" th:value="${kelurahan.id}" th:text="${kelurahan.nama_kelurahan}">
+			    	</option>
+			    </select>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Cari Kecamatan</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="/datatable/datatables.css" />
+		<script type="text/javascript" charset="utf8" src="/datatable/datatables.js"></script>
+		<script>
+		$(document).ready( function () {
+		    $('#table_id').DataTable();
+		} );
+		</script>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragments :: header"></nav>
+		
+		<div class="container container-fluid">
+			<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+			<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
+			<hr/>
+			<h3 th:text="'Lihat data penduduk berdasarkan Kota ' + ${kota.nama_kota} + ' dan Kecamatan ' + ${kecamatan.nama_kecamatan} + ' dan Kelurahan ' + ${kelurahan.nama_kelurahan}"></h3>
+			
+			<table id="table_id">
+        	<thead>
+        		<tr>
+        			<th>No</th>
+        			<th>Nama Lengkap</th>
+        			<th>NIK</th>
+        			<th>Jenis Kelamin</th> 			
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<div th:each="penduduks,iterationStatus: ${penduduk.penduduks}">
+		        	<tr>
+			            <td th:text="${iterationStatus.count}">No. 1</td>
+				       	<td th:text="${penduduks.nama}"></td>
+				       	<td th:text="${penduduks.nik}"></td>
+				       	<td th:text="${penduduks.jenis_kelamin} == 0 ? 'Laki-laki' : 'Perempuan'"></td>
+				    	
+
+				    </tr>
+			    </div>
+        	</tbody>
+        </table>
+		</div>
+		
+	</body>
+</html>
